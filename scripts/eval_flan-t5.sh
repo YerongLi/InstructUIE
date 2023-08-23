@@ -16,14 +16,14 @@ port=$(shuf -i25000-30000 -n1)
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 deepspeed --master_port $port src/run_uie.py \
    --do_predict \
    --predict_with_generate \
-   --model_name_or_path /root/MODELS/flan-t5-700M \
+   --model_name_or_path ck \
    --resume_from_checkpoint output/t5-700M-ie-single \
-   --data_dir /workspace/IE_data_v2 \
-   --task_config_dir /workspace/InstructUIE/configs/multi_task_configs \
-   --instruction_file /workspace/InstructUIE/configs/instruction_config.json \
+   --data_dir data \
+   --task_config_dir /scratch/yerong/InstructUIE/configs/multi_task_configs \
+   --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
    --instruction_strategy single \
    --input_record_file flan-t5.record \
-   --per_device_eval_batch_size 16 \
+   --per_device_eval_batch_size 1 \
    --deepspeed configs/ds_configs/stage0.config \
    --run_name t5-700M-mult-mi-experiment \
    --max_source_length 512 \
