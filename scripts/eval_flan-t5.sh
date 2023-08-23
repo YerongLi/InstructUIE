@@ -2,7 +2,7 @@
 set -x
 
 export CUDA_DEVICE_ORDER="PCI_BUS_ID"
-export TRANSFORMERS_CACHE=/root/.cache/huggingface
+# export TRANSFORMERS_CACHE=/root/.cache/huggingface
 
 port=$(shuf -i25000-30000 -n1)
 
@@ -35,3 +35,27 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --num_examples 0 \
    --overwrite_output_dir \
    --overwrite_cache
+
+
+# CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
+#    --do_predict \
+#    --predict_with_generate \
+#    --model_name_or_path ck \
+#    --resume_from_checkpoint output/t5-700M-ie-single \
+#    --data_dir data \
+#    --task_config_dir /scratch/yerong/InstructUIE/configs/multi_task_configs \
+#    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
+#    --instruction_strategy single \
+#    --input_record_file flan-t5.record \
+#    --per_device_eval_batch_size 1 \
+#    --deepspeed configs/ds_configs/stage0.config \
+#    --run_name t5-700M-mult-mi-experiment \
+#    --max_source_length 512 \
+#    --max_target_length 50 \
+#    --generation_max_length 50 \
+#    --max_num_instances_per_eval_task 200 \
+#    --add_task_name False \
+#    --add_dataset_name False \
+#    --num_examples 0 \
+#    --overwrite_output_dir \
+#    --overwrite_cache
