@@ -13,7 +13,7 @@ port=$(shuf -i25000-30000 -n1)
 # 其余参数可与当前版本保持一致
 
 # 3090 * 4 on t5-700M
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 deepspeed --master_port $port src/run_uie.py \
+CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --do_predict \
    --predict_with_generate \
    --model_name_or_path ck \
