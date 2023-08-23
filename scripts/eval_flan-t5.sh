@@ -23,7 +23,7 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --instruction_strategy single \
    --input_record_file flan-t5.record \
    --per_device_eval_batch_size 1 \
-   --deepspeed configs/ds_configs/stage0.config \
+   --deepspeed configs/ds_configs/stage3.config \
    --run_name t5-700M-mult-mi-experiment \
    --max_source_length 512 \
    --max_target_length 20 \
