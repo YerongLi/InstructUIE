@@ -26,9 +26,9 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --deepspeed configs/ds_configs/stage0.config \
    --run_name t5-700M-mult-mi-experiment \
    --max_source_length 512 \
-   --max_target_length 50 \
+   --max_target_length 20 \
    --generation_max_length 50 \
-   --max_num_instances_per_eval_task 200 \
+   --max_num_instances_per_eval_task 1 \
    --add_task_name False \
    --add_dataset_name False \
    --num_examples 0 \
