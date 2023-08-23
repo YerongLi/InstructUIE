@@ -34,7 +34,8 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --add_dataset_name False \
    --num_examples 0 \
    --overwrite_output_dir \
-   --overwrite_cache
+   --overwrite_cache \
+   --output_dir out
 
 
 # CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
