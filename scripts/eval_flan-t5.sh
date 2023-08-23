@@ -17,7 +17,7 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --do_predict \
    --predict_with_generate \
    --model_name_or_path ck \
-   --resume_from_checkpoint output/t5-700M-ie-single \
+   # --resume_from_checkpoint output/t5-700M-ie-single \
    --data_dir data \
    --task_config_dir /scratch/yerong/InstructUIE/configs/multi_task_configs \
    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
@@ -35,7 +35,7 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --num_examples 0 \
    --overwrite_output_dir \
    --overwrite_cache \
-   --output_dir out
+   --output_dir output
 
 
 # CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
