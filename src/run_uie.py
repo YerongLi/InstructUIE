@@ -306,7 +306,8 @@ def main():
         over_sampling=data_args.over_sampling
     )
     raw_datasets.cleanup_cache_files()
-
+    print(' === keys === ')
+    print(raw_datasets["test"].keys())
     # Load pretrained model and tokenizer
     #
     # Distributed training:
