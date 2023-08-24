@@ -4,7 +4,7 @@ set -x
 alias python=python3
 # python3 -c "import nltk; nltk.download('punkt', quiet=True)"
 BD_NAME=zenithbigvol
-export NLTK_DATA=/mnt/bd/$BD_NAME/nltk_data
+export NLTK_DATA=/scratch/yerong/nltk_data
 
 export BYTED_TORCH_FX=O0
 export NCCL_IB_DISABLE=0 

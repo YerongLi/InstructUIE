@@ -16,7 +16,7 @@ port=$(shuf -i25000-30000 -n1)
 CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --do_predict \
    --predict_with_generate \
-   --model_name_or_path ck \
+   --model_name_or_path flan-t5 \
    --data_dir data \
    --task_config_dir /scratch/yerong/InstructUIE/configs/multi_task_configs \
    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
