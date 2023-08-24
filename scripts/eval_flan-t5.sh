@@ -13,7 +13,7 @@ port=$(shuf -i25000-30000 -n1)
 # 其余参数可与当前版本保持一致
 
 # 3090 * 4 on t5-700M
-CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
+CUDA_VISIBLE_DEVICES=0 python src/run_uie.py \
    --do_predict \
    --predict_with_generate \
    --model_name_or_path flan-t5 \
@@ -22,8 +22,7 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
    --instruction_strategy single \
    --input_record_file flan-t5.record \
-   --per_device_eval_batch_size 16 \
-   --deepspeed configs/ds_configs/stage3.config \
+   --per_device_eval_batch_size 32 \
    --run_name t5-700M-mult-mi-experiment \
    --max_source_length 512 \
    --max_target_length 20 \
