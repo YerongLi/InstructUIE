@@ -315,7 +315,8 @@ def main():
     )
     raw_datasets.cleanup_cache_files()
     logging.info(' === keys === ')
-    logging.info(raw_datasets["test"].keys())
+    dataset_keys = dir(raw_datasets)
+    logging.info("Dataset keys: %s", dataset_keys)
     # Load pretrained model and tokenizer
     #
     # Distributed training:
