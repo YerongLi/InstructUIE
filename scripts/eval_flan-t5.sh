@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=0 python src/run_uie.py \
    --overwrite_output_dir \
    --overwrite_cache \
    --output_dir output \
-   --max_predict_samples 5000 \
+   --max_predict_samples 10000 \
 
 
 # CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
