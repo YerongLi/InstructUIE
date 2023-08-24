@@ -56,7 +56,6 @@ from compute_metrics import compute_metrics, compute_grouped_metrics
 # off wandb
 os.environ['WANDB_DISABLED'] = "True"
 # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-# logger = logging.getLogger(__name__)
 logging.basicConfig(
     format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
     level=logging.INFO,
@@ -65,6 +64,8 @@ logging.basicConfig(
 
 logging.info(f'Logger start: {os.uname()[1]}')
 CURRENT_DIR = os.path.dirname(__file__)
+logger = logging.getLogger(__name__)
+
 
 try:
     nltk.data.find("tokenizers/punkt")
