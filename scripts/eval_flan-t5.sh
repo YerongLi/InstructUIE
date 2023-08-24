@@ -22,19 +22,20 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
    --instruction_strategy single \
    --input_record_file flan-t5.record \
-   --per_device_eval_batch_size 1 \
+   --per_device_eval_batch_size 8 \
    --deepspeed configs/ds_configs/stage3.config \
    --run_name t5-700M-mult-mi-experiment \
    --max_source_length 512 \
    --max_target_length 20 \
    --generation_max_length 50 \
-   --max_num_instances_per_eval_task 1 \
+   --max_num_instances_per_eval_task 30 \
    --add_task_name False \
    --add_dataset_name False \
    --num_examples 0 \
    --overwrite_output_dir \
    --overwrite_cache \
-   --output_dir output
+   --output_dir output \
+   --max_predict_samples 5000 \
 
 
 # CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
