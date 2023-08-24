@@ -56,7 +56,14 @@ from compute_metrics import compute_metrics, compute_grouped_metrics
 # off wandb
 os.environ['WANDB_DISABLED'] = "True"
 # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-4s - %(filename)-6s:%(lineno)d - %(message)s',
+    level=logging.INFO,
+    filename='./output.log',
+    datefmt='%m-%d %H:%M:%S')
+
+logging.info(f'Logger start: {os.uname()[1]}')
 CURRENT_DIR = os.path.dirname(__file__)
 
 try:
@@ -306,8 +313,8 @@ def main():
         over_sampling=data_args.over_sampling
     )
     raw_datasets.cleanup_cache_files()
-    print(' === keys === ')
-    print(raw_datasets["test"].keys())
+    logging.info(' === keys === ')
+    logging.info(raw_datasets["test"].keys())
     # Load pretrained model and tokenizer
     #
     # Distributed training:
