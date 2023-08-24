@@ -28,7 +28,7 @@ CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
    --max_source_length 512 \
    --max_target_length 20 \
    --generation_max_length 50 \
-   --max_num_instances_per_eval_task 50 \
+   --max_num_instances_per_eval_task 5 \
    --add_task_name False \
    --add_dataset_name False \
    --num_examples 0 \
