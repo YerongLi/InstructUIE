@@ -239,16 +239,19 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
     #     with open(labels_path, encoding="utf-8") as labels_f:
     #         labels = json.load(labels_f)
     def _load_dataset(self, dataset_path, labels_path, num_instances=100):
-    with open(dataset_path, encoding="utf-8") as task_f:
-        s = task_f.read()
-        instances = json.loads(s)[:num_instances]
-    with open(labels_path, encoding="utf-8") as labels_f:
-        labels = json.load(labels_f)
-    return instances, labels[:num_instances]
+        with open(dataset_path, encoding="utf-8") as task_f:
+            s = task_f.read()
+            instances = json.loads(s)
+        with open(labels_path, encoding="utf-8") as labels_f:
+            labels = json.load(labels_f)
+
+        limited_instances = instances[:num_instances]
+        limited_labels = labels[:num_instances]
+
+        return limited_instances, limited_labels
 
 
 
-        return instances, labels
 
     def _get_instruction(self, task):
         assert self.config.instruction_strategy in INSTRUCTION_STRATEGIES
