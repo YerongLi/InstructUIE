@@ -238,25 +238,19 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
     #         instances = json.loads(s)
     #     with open(labels_path, encoding="utf-8") as labels_f:
     #         labels = json.load(labels_f)
-
-    def _load_dataset(self, dataset_path, labels_path, num_instances=100):
+    def _load_dataset(self, dataset_path, labels_path, num_instances=200):
         with open(dataset_path, encoding="utf-8") as task_f:
             s = task_f.read()
             instances = json.loads(s)
         with open(labels_path, encoding="utf-8") as labels_f:
             labels = json.load(labels_f)
 
-        # Ensure that we don't exceed the available instances
-        num_instances = min(num_instances, len(instances))
-
-        # Randomly shuffle the indices and select num_instances random samples
-        random_indices = random.sample(range(len(instances)), num_instances)
-        limited_instances = [instances[idx] for idx in random_indices]
+        limited_instances = instances[:num_instances]
 
         if isinstance(labels, list):
-            limited_labels = [labels[idx] for idx in random_indices]
+            limited_labels = labels[:num_instances]
         else:
-            limited_labels = {key: [labels[key][idx] for idx in random_indices] for key in labels}
+            limited_labels = {key: labels[key][:num_instances] for key in labels}
 
         return limited_instances, limited_labels
 
