@@ -232,12 +232,20 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
                 }),
         ]
 
-    def _load_dataset(self, dataset_path, labels_path):
+    # def _load_dataset(self, dataset_path, labels_path):
+    #     with open(dataset_path, encoding="utf-8") as task_f:
+    #         s = task_f.read()
+    #         instances = json.loads(s)
+    #     with open(labels_path, encoding="utf-8") as labels_f:
+    #         labels = json.load(labels_f)
+    def _load_dataset(self, dataset_path, labels_path, num_instances=100):
         with open(dataset_path, encoding="utf-8") as task_f:
             s = task_f.read()
-            instances = json.loads(s)
+            instances = json.loads(s)[:num_instances]
         with open(labels_path, encoding="utf-8") as labels_f:
-            labels = json.load(labels_f)
+            labels = json.load(labels_f)[:num_instances]
+        return instances, labels
+
 
         return instances, labels
 
