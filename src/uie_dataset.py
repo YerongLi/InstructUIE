@@ -246,7 +246,11 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
             labels = json.load(labels_f)
 
         limited_instances = instances[:num_instances]
-        limited_labels = labels[:num_instances]
+
+        if isinstance(labels, list):
+            limited_labels = labels[:num_instances]
+        else:
+            limited_labels = {key: labels[key][:num_instances] for key in labels}
 
         return limited_instances, limited_labels
 
