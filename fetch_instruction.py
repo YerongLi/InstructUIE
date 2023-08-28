@@ -21,10 +21,11 @@ for line in lines:
 
     if task and dataset:
         task_dataset = (task, dataset)
-        if task_dataset in task_datasets_instructions:
+        if task_dataset not in task_datasets_instructions:
+            task_datasets_instructions[task_dataset] = set()
+
+        if instruction_before is not None:
             task_datasets_instructions[task_dataset].add(instruction_before)
-        else:
-            task_datasets_instructions[task_dataset] = {instruction_before}
 
 # Print the "Task," "Dataset," and corresponding "Instructions" sets
 for (task, dataset), instructions in task_datasets_instructions.items():
