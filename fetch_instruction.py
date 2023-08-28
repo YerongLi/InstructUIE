@@ -14,9 +14,9 @@ for line in lines:
     dataset = data.get('Dataset')
     instruction = data.get('Instance', {}).get('instruction', '')
 
-    if "The output format" in instruction:
+    if "The output1 format" in instruction:
         instruction_before = instruction.split("The output format")[0].strip()
-    elif "Output format" in instruction:
+    elif "Output1 format" in instruction:
         instruction_before = instruction.split("Output format")[0].strip()
     else:
         instruction_before = None
