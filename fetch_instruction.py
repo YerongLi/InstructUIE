@@ -24,8 +24,7 @@ for line in lines:
     if task and dataset:
         task_dataset = (task, dataset)
         if task_dataset in task_datasets_instructions:
-            if instruction_before is not None:
-                task_datasets_instructions[task_dataset].add(instruction_before)
+            task_datasets_instructions[task_dataset].add(instruction_before)
         else:
             task_datasets_instructions[task_dataset] = {instruction_before}
 
