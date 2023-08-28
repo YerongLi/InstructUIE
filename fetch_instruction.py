@@ -14,14 +14,22 @@ for line in lines:
     dataset = data.get('Dataset')
     instruction = data.get('Instance', {}).get('instruction', '')
 
+    if "The output format" in instruction:
+        instruction_before = instruction.split("The output format")[0].strip()
+    elif "Output format" in instruction:
+        instruction_before = instruction.split("Output format")[0].strip()
+    else:
+        instruction_before = None
+
     if task and dataset:
         task_dataset = (task, dataset)
         if task_dataset in task_datasets_instructions:
-            task_datasets_instructions[task_dataset].add(instruction)
+            if instruction_before is not None:
+                task_datasets_instructions[task_dataset].add(instruction_before)
         else:
-            task_datasets_instructions[task_dataset] = {instruction}
+            task_datasets_instructions[task_dataset] = {instruction_before}
 
-# Print the "Task," "Dataset," and corresponding "Instructions" sets
+# Print the "Task," "Dataset," and corresponding unique "Instructions" sets
 for (task, dataset), instructions in task_datasets_instructions.items():
     print(f'Task: {task}')
     print(f'Dataset: {dataset}')
