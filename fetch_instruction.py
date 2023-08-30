@@ -16,26 +16,21 @@ for line in lines:
 
     if "The output format" in instruction:
         instruction_before = instruction.split("The output format")[0].strip()
-        schema = instruction.split("The output format")[1].strip()
     elif "Output format" in instruction:
         instruction_before = instruction.split("Output format")[0].strip()
-        schema = instruction.split("Output format")[1].strip()
     else:
         instruction_before = None
-        schema = None
 
     if task and dataset:
         task_dataset = (task, dataset)
         if task_dataset in task_datasets_instructions:
-            task_datasets_instructions[task_dataset].add((instruction_before, schema))
+            task_datasets_instructions[task_dataset].add(instruction_before)
         else:
-            task_datasets_instructions[task_dataset] = {(instruction_before, schema)}
+            task_datasets_instructions[task_dataset] = {instruction_before}
 
 # Print the "Task," "Dataset," and corresponding unique "Instructions" sets
 for (task, dataset), instructions in task_datasets_instructions.items():
     print(f'Task: {task}')
     print(f'Dataset: {dataset}')
-    for instruction, schema in instructions:
-        print(f'Instruction: {instruction}')
-        print(f'Schema: {schema}')
+    print(f'Instructions: {json.dumps(list(instructions))}')
     print()
