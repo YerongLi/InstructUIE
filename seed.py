@@ -17,7 +17,7 @@ with open('seed_task_ie.jsonl', 'w') as jsonl_file:
         if "The output format" in instruction_str:
             parts = instruction_str.split("The output format")
             instruction = parts[0].strip()
-            schema = f'Output format {parts[1].strip()}'.replace('Text: {0}\nAnswer:', '')
+            schema = f'Output format {parts[1].strip()}'.replace(' \nText: {0} \nAnswer:', '')
         elif "Output format" in instruction_str:
             parts = instruction_str.split("Output format")
             instruction = parts[0].strip()
