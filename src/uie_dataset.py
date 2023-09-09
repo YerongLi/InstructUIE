@@ -273,6 +273,8 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
             task_instructions = self.config.instructions['zero-shot'][task]
         if self.config.instruction_strategy == "single":
             # return task_instructions[0]
+            logging.info('task')
+            logging.info(task)
             return random.choice(task_instructions)
 
         else:
