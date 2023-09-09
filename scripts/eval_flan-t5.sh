@@ -22,7 +22,7 @@ python src/run_uie.py \
    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
    --instruction_strategy multiple \
    --input_record_file flan-t5.record \
-   --per_device_eval_batch_size 32 \
+   --per_device_eval_batch_size 8 \
    --run_name t5-700M-mult-mi-experiment \
    --max_source_length 512 \
    --max_target_length 20 \
