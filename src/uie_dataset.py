@@ -278,8 +278,8 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
 
         else:
             ans = random.choice(task_instructions)
-            # logging.info('ans')
-            # logging.info(ans)
+            logging.info('ans')
+            logging.info(ans)
             return ans
 
     def _sampling_dataset(self, instances, sampling_strategy, max_num_instances):
