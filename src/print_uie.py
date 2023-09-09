@@ -353,16 +353,17 @@ def main():
         tokenizer.padding_side = 'left'
     else:
         model_class = AutoModelForSeq2SeqLM
-    model = model_class.from_pretrained(
-        model_args.model_name_or_path,
-        from_tf=bool(".ckpt" in model_args.model_name_or_path),
-        config=config,
-        cache_dir=model_args.cache_dir,
-        revision=model_args.model_revision,
-        use_auth_token=True if model_args.use_auth_token else None,
-        device_map = 'auto',
-    )
-    model.resize_token_embeddings(len(tokenizer))
+    model = null
+    # model = model_class.from_pretrained(
+    #     model_args.model_name_or_path,
+    #     from_tf=bool(".ckpt" in model_args.model_name_or_path),
+    #     config=config,
+    #     cache_dir=model_args.cache_dir,
+    #     revision=model_args.model_revision,
+    #     use_auth_token=True if model_args.use_auth_token else None,
+    #     device_map = 'auto',
+    # )
+    # model.resize_token_embeddings(len(tokenizer))
 
     if (
             hasattr(model.config, "max_position_embeddings")
@@ -519,7 +520,8 @@ def main():
             checkpoint = training_args.resume_from_checkpoint
         # without last ckpt and resume ckpt, would predict with current model
         if checkpoint:
-            model = model_class.from_pretrained(checkpoint)
+            # model = model_class.from_pretrained(checkpoint)
+            model = null
             trainer = UIETrainer(
                 model=model,
                 args=training_args,
