@@ -353,7 +353,7 @@ def main():
         tokenizer.padding_side = 'left'
     else:
         model_class = AutoModelForSeq2SeqLM
-    model = null
+    model = None
     # model = model_class.from_pretrained(
     #     model_args.model_name_or_path,
     #     from_tf=bool(".ckpt" in model_args.model_name_or_path),
@@ -518,10 +518,10 @@ def main():
             checkpoint = get_last_checkpoint(training_args.output_dir)
         if training_args.resume_from_checkpoint is not None:
             checkpoint = training_args.resume_from_checkpoint
-        # without last ckpt and resume ckpt, would predict with current model
+        # without last ckpt and resume ckpt, would predict with current None
         if checkpoint:
             # model = model_class.from_pretrained(checkpoint)
-            model = null
+            model = None
             trainer = UIETrainer(
                 model=model,
                 args=training_args,
