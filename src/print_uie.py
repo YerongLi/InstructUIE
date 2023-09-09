@@ -365,24 +365,24 @@ def main():
     # )
     # model.resize_token_embeddings(len(tokenizer))
 
-    if (
-            hasattr(model.config, "max_position_embeddings")
-            and model.config.max_position_embeddings < data_args.max_source_length
-    ):
-        if model_args.resize_position_embeddings is None:
-            logger.warning(
-                f"Increasing the model's number of position embedding vectors from {model.config.max_position_embeddings} "
-                f"to {data_args.max_source_length}."
-            )
-            model.resize_position_embeddings(data_args.max_source_length)
-        elif model_args.resize_position_embeddings:
-            model.resize_position_embeddings(data_args.max_source_length)
-        else:
-            raise ValueError(
-                f"`--max_source_length` is set to {data_args.max_source_length}, but the model only has {model.config.max_position_embeddings}"
-                f" position encodings. Consider either reducing `--max_source_length` to {model.config.max_position_embeddings} or to automatically "
-                "resize the model's position encodings by passing `--resize_position_embeddings`."
-            )
+    # if (
+    #         hasattr(model.config, "max_position_embeddings")
+    #         and model.config.max_position_embeddings < data_args.max_source_length
+    # ):
+    #     if model_args.resize_position_embeddings is None:
+    #         logger.warning(
+    #             f"Increasing the model's number of position embedding vectors from {model.config.max_position_embeddings} "
+    #             f"to {data_args.max_source_length}."
+    #         )
+    #         model.resize_position_embeddings(data_args.max_source_length)
+    #     elif model_args.resize_position_embeddings:
+    #         model.resize_position_embeddings(data_args.max_source_length)
+    #     else:
+    #         raise ValueError(
+    #             f"`--max_source_length` is set to {data_args.max_source_length}, but the model only has {model.config.max_position_embeddings}"
+    #             f" position encodings. Consider either reducing `--max_source_length` to {model.config.max_position_embeddings} or to automatically "
+    #             "resize the model's position encodings by passing `--resize_position_embeddings`."
+    #         )
 
     if training_args.label_smoothing_factor > 0 and not hasattr(model, "prepare_decoder_input_ids_from_labels"):
         logger.warning(
