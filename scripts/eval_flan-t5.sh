@@ -34,7 +34,6 @@ python src/run_uie.py \
    --overwrite_output_dir \
    --overwrite_cache \
    --output_dir output \
-   --device 0,1 \
    --max_predict_samples 200 
 
 
