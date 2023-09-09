@@ -264,8 +264,6 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
 
 
     def _get_instruction(self, task):
-        timestamp = int(time.time())
-        random.seed(timestamp)
         assert self.config.instruction_strategy in INSTRUCTION_STRATEGIES
         if self.config.num_examples is not None and self.config.num_examples > 0:
             task_instructions = self.config.instructions['few-shot'][task]
