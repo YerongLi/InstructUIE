@@ -280,6 +280,7 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
 
         else:
             ans = random.choice(task_instructions)
+            print(ans)
             return ans
 
     def _sampling_dataset(self, instances, sampling_strategy, max_num_instances):
