@@ -275,11 +275,12 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
             task_instructions = self.config.instructions['zero-shot'][task]
         if self.config.instruction_strategy == "single":
             # return task_instructions[0]
-
-            return random.choice(task_instructions)
+            ans = random.choice(task_instructions)
+            return ans
 
         else:
-            return random.choice(task_instructions)
+            ans = random.choice(task_instructions)
+            return ans
 
     def _sampling_dataset(self, instances, sampling_strategy, max_num_instances):
         if sampling_strategy == 'random' and max_num_instances is not None and max_num_instances >= 0:
