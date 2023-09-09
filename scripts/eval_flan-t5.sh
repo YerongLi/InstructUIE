@@ -20,7 +20,7 @@ CUDA_VISIBLE_DEVICES=0 python src/run_uie.py \
    --data_dir data \
    --task_config_dir /scratch/yerong/InstructUIE/configs/multi_task_configs \
    --instruction_file /scratch/yerong/InstructUIE/configs/instruction_config.json \
-   --instruction_strategy single \
+   --instruction_strategy random \
    --input_record_file flan-t5.record \
    --per_device_eval_batch_size 32 \
    --run_name t5-700M-mult-mi-experiment \
@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=0 python src/run_uie.py \
    --overwrite_output_dir \
    --overwrite_cache \
    --output_dir output \
-   # --max_predict_samples 20000 \
+   --max_predict_samples 200 \
 
 
 # CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \
