@@ -13,7 +13,7 @@ port=$(shuf -i25000-30000 -n1)
 # 其余参数可与当前版本保持一致
 
 # 3090 * 4 on t5-700M
-CUDA_VISIBLE_DEVICES=0 python src/run_uie.py \
+python src/run_uie.py \
    --do_predict \
    --predict_with_generate \
    --model_name_or_path flan-t5 \
