@@ -33,8 +33,8 @@ python src/run_uie.py \
    --num_examples 0 \
    --overwrite_output_dir \
    --overwrite_cache \
-   --output_dir output
-   # --max_predict_samples 200 
+   --output_dir output \
+   --max_predict_samples 200 
 
 
 # CUDA_VISIBLE_DEVICES=0 deepspeed --master_port $port src/run_uie.py \

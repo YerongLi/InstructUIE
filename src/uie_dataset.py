@@ -272,8 +272,8 @@ class UIEInstructions(datasets.GeneratorBasedBuilder):
         if self.config.instruction_strategy == "single":
             # return task_instructions[0]
             ans = random.choice(task_instructions)
-            # logging.info('ans')
-            # logging.info(ans)
+            logging.info('ans')
+            logging.info(ans)
             return ans
 
         else:
