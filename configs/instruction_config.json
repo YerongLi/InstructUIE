@@ -39,7 +39,7 @@
   "RC": [
     {"instruction_type": "zero-shot", "instruction": "In above text, what is the relationship between {0} and {1}? \n"},
     {"instruction_type": "zero-shot", "instruction": "Describe the relationship between {0} and {1} in above sentence. \n"},
-    {"instruction_type": "zero-shot", "instruction": "Find the relationship between {0} and {1} in text from following options? \n"}
+    {"instruction_type": "zero-shot", "instruction": "Find the relationship between {0} and {1} in text from following options? \n"},
     {"instruction_type": "zero-shot", "instruction": "Determine the relationship between {0} and {1} in the given text. \n"},
     {"instruction_type": "zero-shot", "instruction": "Identify the connection between {0} and {1} in the provided passage. \n"},
     {"instruction_type": "zero-shot", "instruction": "What is the relation between {0} and {1} in the text? \n"},
@@ -74,7 +74,7 @@
   "NER": [
     {"instruction_type": "zero-shot", "instruction": "Please list all entity words in the text that fit the category.Output format is \"type1: word1; type2: word2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "Please find all the entity words associated with the category in the given text.Output format is \"type1: word1; type2: word2\". \n"},
-    {"instruction_type": "zero-shot", "instruction": "Please tell me all the entity words in the text that belong to a given category.Output format is \"type1: word1; type2: word2\". \n"}
+    {"instruction_type": "zero-shot", "instruction": "Please tell me all the entity words in the text that belong to a given category.Output format is \"type1: word1; type2: word2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "Identify and list all words representing entities of a specific type in the text. Output format is \"type1: word1; type2: word2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "Locate and extract all entity words associated with a particular category within the given text. Output format is \"type1: word1; type2: word2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "Please provide a list of all entity words in the text that pertain to a given category. Output format is \"type1: word1; type2: word2\". \n"},
@@ -123,7 +123,7 @@
     {"instruction_type": "zero-shot", "instruction": "Given options, please tell me the relationships of all the listed entity pairs.Output format is \"relation1: word1, word2; relation2: word3, word4\". \n"}  
   ],
   "EEA": [
-    {"instruction_type": "zero-shot", "instruction": "Given event type and trigger, please tell me the arguments of all the listed option. Output format is \"name1: role1; name2: role2\". \n"}
+    {"instruction_type": "zero-shot", "instruction": "Given event type and trigger, please tell me the arguments of all the listed option. Output format is \"name1: role1; name2: role2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "For the provided event type and trigger, extract and list all the associated arguments. Format the output as \"name1: role1; name2: role2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "Given an event type and its trigger, identify and report the roles of all the related arguments. Present the results in the format of \"name1: role1; name2: role2\". \n"},
     {"instruction_type": "zero-shot", "instruction": "Analyze the provided event type and trigger to extract information about the associated arguments. Output should be structured as \"name1: role1; name2: role2\". \n"},
@@ -173,7 +173,7 @@
     {"instruction_type": "zero-shot", "instruction": "Given an event type and trigger, extract and present the argument roles associated with it. Format the output as \"name1: role1; name2: role2\". \n"}
 ],
   "EET": [
-    {"instruction_type": "zero-shot", "instruction": "Please tell me event type and its trigger word from given type options. Output format is \"type: trigger\". "}
+    {"instruction_type": "zero-shot", "instruction": "Please tell me event type and its trigger word from given type options. Output format is \"type: trigger\". "},
     {"instruction_type": "zero-shot", "instruction": "Choose the correct event type and its corresponding trigger word from the provided options. Format the output as \"type: trigger\". "},
     {"instruction_type": "zero-shot", "instruction": "Identify the event type and its associated trigger word among the given choices. Present the result in the format \"type: trigger\". "},
     {"instruction_type": "zero-shot", "instruction": "From the options provided, select the event type and its corresponding trigger word. Output should be structured as \"type: trigger\". "},
