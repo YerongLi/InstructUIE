@@ -125,6 +125,9 @@ class UIEConfig(datasets.BuilderConfig):
                 else:
                     raise ValueError("Invalid instruction type {}, please check your instruction file {}"
                                      .format(instruct_type, instruction_file))
+        logging.info('instructions')
+        logging.info(instructions)
+
         return instructions
 
     def _parse_task_config(self, task_config_dir):
