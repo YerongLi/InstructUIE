@@ -16,10 +16,12 @@
 # Lint as: python3
 """InstructUIE Dataset."""
 
+import datasets
 import json
+import logging
 import os
 import random
-import datasets
+
 from hashlib import md5
 
 logger = datasets.logging.get_logger(__name__)
