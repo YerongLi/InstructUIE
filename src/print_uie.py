@@ -464,12 +464,8 @@ def main():
     logging.info(type(predict_dataset))
     # Assuming you have imported the necessary libraries and have your predict_dataset ready
 
-    # Iterate over the first 10 samples
-    for i, sample in enumerate(predict_dataset):
-        if i < 10:
-            logging.info(sample)
-        else:
-            break
+    with open('seed_task_ie.json', 'w') as json_file:
+        json.dump(predict_dataset, json_file, indent=4)
 
     # trainer = UIETrainer(
     #     model=model,
