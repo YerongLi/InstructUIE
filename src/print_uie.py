@@ -460,8 +460,8 @@ def main():
     print(f"-----Gradient checkpointing: {training_args.gradient_checkpointing} -----")
     if training_args.gradient_checkpointing:
         model.gradient_checkpointing_enable()
-    logging.info('Type of evaluation dataset')
-    logging.info(type(eval_dataset))
+    logging.info('Type of prediction dataset')
+    logging.info(type(predict_dataset))
     # trainer = UIETrainer(
     #     model=model,
     #     args=training_args,
