@@ -536,15 +536,15 @@ def main():
         if data_args.max_predict_samples is not None:
             predict_dataset = predict_dataset.select(range(data_args.max_predict_samples))
 
-        predict_results = trainer.predict(
-            predict_dataset,
-            metric_key_prefix="predict",
-            max_new_tokens=max_new_tokens,
-            num_beams=num_beams,
-            repetition_penalty=repetition_penalty,
-            pad_token_id=tokenizer.pad_token_id
-        )
-        metrics = predict_results.metrics
+        # predict_results = trainer.predict(
+        #     predict_dataset,
+        #     metric_key_prefix="predict",
+        #     max_new_tokens=max_new_tokens,
+        #     num_beams=num_beams,
+        #     repetition_penalty=repetition_penalty,
+        #     pad_token_id=tokenizer.pad_token_id
+        # )
+        # metrics = predict_results.metrics
         max_predict_samples = (
             data_args.max_predict_samples if data_args.max_predict_samples is not None else len(predict_dataset)
         )
