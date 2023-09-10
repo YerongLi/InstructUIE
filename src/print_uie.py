@@ -470,7 +470,7 @@ def main():
         reformatted_entry = {
             "id": f"seed_task_{entry['Instance']['id']}",
             "name": entry["Task"],
-            "instruction": entry["Instance"]["instruction"],
+            "instruction": entry["Instance"]["instruction"].replace(' \nText: {0} \nAnswer:', '').strip(),
             "schema": entry["Instance"].get("instruction", ""),
             "input": entry["Instance"]["sentence"],
             "output": entry["Instance"]["label"],
