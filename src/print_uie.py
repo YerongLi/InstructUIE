@@ -322,37 +322,37 @@ def main():
     # Distributed training:
     # The .from_pretrained methods guarantee that only one local process can concurrently
     # download model & vocab.
-    config = AutoConfig.from_pretrained(
-        model_args.config_name if model_args.config_name else model_args.model_name_or_path,
-        cache_dir=model_args.cache_dir,
-        revision=model_args.model_revision,
-        use_auth_token=True if model_args.use_auth_token else None,
-    )
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
-        cache_dir=model_args.cache_dir,
-        use_fast=model_args.use_fast_tokenizer,
-        revision=model_args.model_revision,
-        use_auth_token=True if model_args.use_auth_token else None,
-    )
+    # config = AutoConfig.from_pretrained(
+    #     model_args.config_name if model_args.config_name else model_args.model_name_or_path,
+    #     cache_dir=model_args.cache_dir,
+    #     revision=model_args.model_revision,
+    #     use_auth_token=True if model_args.use_auth_token else None,
+    # )
+    # tokenizer = AutoTokenizer.from_pretrained(
+    #     model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
+    #     cache_dir=model_args.cache_dir,
+    #     use_fast=model_args.use_fast_tokenizer,
+    #     revision=model_args.model_revision,
+    #     use_auth_token=True if model_args.use_auth_token else None,
+    # )
 
-    if 'bloom' in model_args.model_name_or_path.lower():
-        model_class = BloomForCausalLM_WithLoss
-        if tokenizer.pad_token is None:
-            tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.padding_side = 'left'
-    elif 'codegen' in model_args.model_name_or_path.lower():
-        model_class = CodeGenForCausalLM_WithLoss
-        tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.padding_side = 'left'
+    # if 'bloom' in model_args.model_name_or_path.lower():
+    #     model_class = BloomForCausalLM_WithLoss
+    #     if tokenizer.pad_token is None:
+    #         tokenizer.pad_token = tokenizer.eos_token
+    #     tokenizer.padding_side = 'left'
+    # elif 'codegen' in model_args.model_name_or_path.lower():
+    #     model_class = CodeGenForCausalLM_WithLoss
+    #     tokenizer.pad_token = tokenizer.eos_token
+    #     tokenizer.padding_side = 'left'
 
-    elif 'neox' in model_args.model_name_or_path.lower():  # add neox
-        model_class = GPTNeoXForCausalLM_WithLoss
-        if tokenizer.pad_token is None:
-            tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.padding_side = 'left'
-    else:
-        model_class = AutoModelForSeq2SeqLM
+    # elif 'neox' in model_args.model_name_or_path.lower():  # add neox
+    #     model_class = GPTNeoXForCausalLM_WithLoss
+    #     if tokenizer.pad_token is None:
+    #         tokenizer.pad_token = tokenizer.eos_token
+    #     tokenizer.padding_side = 'left'
+    # else:
+    #     model_class = AutoModelForSeq2SeqLM
     model = None
     # model = model_class.from_pretrained(
     #     model_args.model_name_or_path,
@@ -461,16 +461,16 @@ def main():
     if training_args.gradient_checkpointing:
         model.gradient_checkpointing_enable()
 
-    trainer = UIETrainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_dataset if training_args.do_train else None,
-        eval_dataset=eval_dataset if training_args.do_eval else None,
-        tokenizer=tokenizer,
-        data_collator=data_collator,
-        compute_metrics=compute_rouge_metrics,
-        callbacks=[DenserEvalCallback] if training_args.denser_evaluation else None
-    )
+    # trainer = UIETrainer(
+    #     model=model,
+    #     args=training_args,
+    #     train_dataset=train_dataset if training_args.do_train else None,
+    #     eval_dataset=eval_dataset if training_args.do_eval else None,
+    #     tokenizer=tokenizer,
+    #     data_collator=data_collator,
+    #     compute_metrics=compute_rouge_metrics,
+    #     callbacks=[DenserEvalCallback] if training_args.denser_evaluation else None
+    # )
 
     all_metrics = {"run_name": training_args.run_name}
 
