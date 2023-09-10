@@ -463,9 +463,16 @@ def main():
     logging.info('Type of prediction dataset')
     logging.info(type(predict_dataset))
     # Assuming you have imported the necessary libraries and have your predict_dataset ready
+    serializable_data = [sample for sample in predict_dataset]
 
-    with open('seed_task_ie.json', 'w') as json_file:
-        json.dump(predict_dataset, json_file, indent=4)
+    # Refract 'Task' key to 'name' in each dictionary
+    for entry in serializable_data:
+        if 'Task' in entry:
+            entry['name'] = entry.pop('Task')
+
+    # Dump the data as JSON
+    with open('output.json', 'w') as json_file:
+        json.dump(serializable_data, json_file, indent=4)
 
     # trainer = UIETrainer(
     #     model=model,
