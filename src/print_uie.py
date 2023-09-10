@@ -467,7 +467,7 @@ def main():
     # Iterate through the original data and reformat each entry
     for entry in serializable_data:
         reformatted_entry = {
-            "Task": entry["name"],
+            "name": entry["Task"],
             "Dataset": entry["Dataset"],
             "Instance": entry["Instance"],
             "Prediction": entry["Instance"]["label"]
