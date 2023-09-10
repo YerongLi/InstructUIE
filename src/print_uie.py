@@ -471,7 +471,7 @@ def main():
             entry['name'] = entry.pop('Task')
 
     # Dump the data as JSON
-    with open('output.json', 'w') as json_file:
+    with open('seed_task_ie.json', 'w') as json_file:
         json.dump(serializable_data, json_file, indent=4)
 
     # trainer = UIETrainer(
