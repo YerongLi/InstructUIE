@@ -462,6 +462,15 @@ def main():
         model.gradient_checkpointing_enable()
     logging.info('Type of prediction dataset')
     logging.info(type(predict_dataset))
+    # Assuming you have imported the necessary libraries and have your predict_dataset ready
+
+    # Iterate over the first 10 samples
+    for i, sample in enumerate(predict_dataset):
+        if i < 10:
+            print(sample)
+        else:
+            break
+
     # trainer = UIETrainer(
     #     model=model,
     #     args=training_args,
