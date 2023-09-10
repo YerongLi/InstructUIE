@@ -464,15 +464,22 @@ def main():
     logging.info(type(predict_dataset))
     # Assuming you have imported the necessary libraries and have your predict_dataset ready
     serializable_data = [sample for sample in predict_dataset]
-
-    # Refract 'Task' key to 'name' in each dictionary
+    # Iterate through the original data and reformat each entry
     for entry in serializable_data:
-        if 'Task' in entry:
-            entry['name'] = entry.pop('Task')
+        reformatted_entry = {
+            "Task": entry["name"],
+            "Dataset": entry["Dataset"],
+            "Instance": entry["Instance"],
+            "Prediction": entry["Instance"]["label"]
+        }
+        reformatted_data.append(reformatted_entry)
 
-    # Dump the data as JSON
-    with open('seed_task_ie.json', 'w') as json_file:
-        json.dump(serializable_data, json_file, indent=4)
+    # Dump the reformatted data as JSON
+    with open('seed_task_ie.json', 'w') as reformatted_json_file:
+        for entry in reformatted_data:
+            reformatted_json_file.write(json.dumps(entry) + '\n')
+
+    print('Data has been reformatted and saved as "seed_task_ie.json"')
 
     # trainer = UIETrainer(
     #     model=model,
