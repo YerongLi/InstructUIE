@@ -413,20 +413,20 @@ def main():
 
     # Data collator
     label_pad_token_id = -100 if data_args.ignore_pad_token_for_loss else tokenizer.pad_token_id
-    data_collator = DataCollatorForUIE(
-        tokenizer,
-        model=model,
-        padding="longest",
-        max_source_length=data_args.max_source_length,
-        max_target_length=data_args.max_target_length,
-        label_pad_token_id=label_pad_token_id,
-        pad_to_multiple_of=8 if training_args.fp16 else None,
-        add_task_name=data_args.add_task_name,
-        add_dataset_name=data_args.add_dataset_name,
-        common_dataset_name=data_args.common_dataset_name,
-        num_examples=data_args.num_examples,
-        input_record_file=data_args.input_record_file
-    )
+    # data_collator = DataCollatorForUIE(
+    #     tokenizer,
+    #     model=model,
+    #     padding="longest",
+    #     max_source_length=data_args.max_source_length,
+    #     max_target_length=data_args.max_target_length,
+    #     label_pad_token_id=label_pad_token_id,
+    #     pad_to_multiple_of=8 if training_args.fp16 else None,
+    #     add_task_name=data_args.add_task_name,
+    #     add_dataset_name=data_args.add_dataset_name,
+    #     common_dataset_name=data_args.common_dataset_name,
+    #     num_examples=data_args.num_examples,
+    #     input_record_file=data_args.input_record_file
+    # )
     # we don't want to remove unused columns because we will prepare each batch during training,
     # and some of the information will also be used in evaluation.
     training_args.remove_unused_columns = False
