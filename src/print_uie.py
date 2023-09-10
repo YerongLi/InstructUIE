@@ -468,8 +468,8 @@ def main():
     reformatted_data = []
     for entry in serializable_data:
         reformatted_entry = {
-            "id": f"seed_task_{entry['name']}",
-            "name": entry["name"],
+            "id": f"seed_task_{entry['Instance']['id']}",
+            "name": entry["Task"],
             "instruction": entry["Instance"]["instruction"],
             "schema": entry["Instance"].get("instruction", ""),
             "input": entry["Instance"]["sentence"],
