@@ -545,15 +545,15 @@ def main():
         #     pad_token_id=tokenizer.pad_token_id
         # )
         # metrics = predict_results.metrics
-        max_predict_samples = (
-            data_args.max_predict_samples if data_args.max_predict_samples is not None else len(predict_dataset)
-        )
-        metrics["predict_samples"] = min(max_predict_samples, len(predict_dataset))
+        # max_predict_samples = (
+        #     data_args.max_predict_samples if data_args.max_predict_samples is not None else len(predict_dataset)
+        # )
+        # metrics["predict_samples"] = min(max_predict_samples, len(predict_dataset))
 
-        trainer.log(metrics)
-        trainer.log_metrics("predict", metrics)
-        trainer.save_metrics("predict", metrics)
-        all_metrics.update(metrics)
+        # trainer.log(metrics)
+        # trainer.log_metrics("predict", metrics)
+        # trainer.save_metrics("predict", metrics)
+        # all_metrics.update(metrics)
 
     if training_args.do_demo:
         logger.info("Serving the model as a demo...")
