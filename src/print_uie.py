@@ -465,12 +465,15 @@ def main():
     # Assuming you have imported the necessary libraries and have your predict_dataset ready
     serializable_data = [sample for sample in predict_dataset]
     # Iterate through the original data and reformat each entry
+    reformatted_data = []
     for entry in serializable_data:
         reformatted_entry = {
-            "name": entry["Task"],
-            "Dataset": entry["Dataset"],
-            "Instance": entry["Instance"],
-            "Prediction": entry["Instance"]["label"]
+            "id": f"seed_task_{entry['name']}",
+            "name": entry["name"],
+            "instruction": entry["Instance"]["instruction"],
+            "schema": entry["Instance"].get("instruction", ""),
+            "input": entry["Instance"]["sentence"],
+            "output": entry["Instance"]["label"],
         }
         reformatted_data.append(reformatted_entry)
 
@@ -478,7 +481,6 @@ def main():
     with open('seed_task_ie.json', 'w') as reformatted_json_file:
         for entry in reformatted_data:
             reformatted_json_file.write(json.dumps(entry) + '\n')
-
     print('Data has been reformatted and saved as "seed_task_ie.json"')
 
     # trainer = UIETrainer(
