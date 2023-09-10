@@ -467,7 +467,7 @@ def main():
     # Iterate over the first 10 samples
     for i, sample in enumerate(predict_dataset):
         if i < 10:
-            print(sample)
+            logging.info(sample)
         else:
             break
 
