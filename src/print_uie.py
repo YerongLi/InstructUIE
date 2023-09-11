@@ -477,10 +477,10 @@ def main():
         reformatted_data.append(reformatted_entry)
 
     # Dump the reformatted data as JSON
-    with open('seed_task_ie.json', 'w') as reformatted_json_file:
+    with open('seed_task_ie.jsonl', 'w') as reformatted_json_file:
         for entry in reformatted_data:
             reformatted_json_file.write(json.dumps(entry) + '\n')
-    print('Data has been reformatted and saved as "seed_task_ie.json"')
+    print('Data has been reformatted and saved as "seed_task_ie.jsonl"')
 
     # trainer = UIETrainer(
     #     model=model,
