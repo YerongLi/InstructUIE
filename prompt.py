@@ -6,34 +6,25 @@ def generate_instruction_prompts(config_file, num_prompts=8):
     with open(config_file, 'r') as f:
         instruction_config = json.load(f)
 
-    # Initialize a dictionary to store prompts from all sections
-    all_prompts = {}
+    # Initialize a list to store all prompts
+    all_prompts = []
 
     # Loop through each section in the instruction config
     for section, instructions in instruction_config.items():
-        # Randomly sample 'num_prompts' instructions from the section
-        sampled_instructions = random.sample(instructions, num_prompts)
+        # Create template prompts for the section
+        prompts = [instruction['instruction'] for instruction in instructions]
+        
+        # Extend the list of all prompts with prompts from this section
+        all_prompts.extend(prompts)
 
-        # Create template prompts using the sampled instructions
-        prompts = []
-        for idx, instruction in enumerate(sampled_instructions, start=1):
-            prompt = f"{idx}. {instruction['instruction']}"
-            prompts.append(prompt)
+    # Randomly sample 'num_prompts' instructions from all sections
+    sampled_instructions = random.sample(all_prompts, num_prompts)
 
-        # Create the final header and combine prompts into a single string
-        header = f"Come up with various instructions for {section}"
-        instruction_string = "\n".join(prompts)
+    # Create the final header and combine prompts into a single string
+    header = "Come up with various instructions for information extraction tasks, Coreference Resolution, Relation Extraction, Aspect Extraction, Argument Mining"
+    instruction_string = "\n".join([f"{idx}. {instruction}" for idx, instruction in enumerate(sampled_instructions, start=1)])
 
-        # Store the prompts for this section in the dictionary
-        all_prompts[section] = f"{header}\n{instruction_string}"
-
-    # Add a placeholder for the 9th instruction
-    all_prompts["9. Placeholder"] = ""
-
-    # Combine prompts from all sections into a single string
-    combined_prompts = "\n\n".join(all_prompts.values())
-
-    return combined_prompts
+    return f"{header}\n{instruction_string}\n{num_prompts + 1}."
 
 # Example usage:
 if __name__ == "__main__":
