@@ -1,8 +1,6 @@
 import json
 import random
-'''
-Fill instructions into a big prompt
-'''
+
 def generate_instruction_prompts(config_file, num_prompts=8):
     # Load instruction config from the JSON file
     with open(config_file, 'r') as f:
@@ -16,15 +14,18 @@ def generate_instruction_prompts(config_file, num_prompts=8):
         # Create template prompts using the sampled instructions
         prompts = []
         for idx, instruction in enumerate(sampled_instructions, start=1):
-            prompt = f"{instruction['instruction']}"
+            prompt = f"{idx}. {instruction['instruction']}"
             prompts.append(prompt)
 
-        return prompts
+        # Create the final header and combine prompts into a single string
+        header = "Come up with various instructions for information extraction tasks, Coreference Resolution, Relation Extraction, Aspect Extraction, Argument Mining: Extracting arguments and their supporting or opposing evidence from text"
+        instruction_string = "\n".join(prompts)
+
+        return f"{header}\n{instruction_string}"
     else:
-        return []
+        return ""
 
 # Example usage:
 if __name__ == "__main__":
     instruction_prompts = generate_instruction_prompts("configs/instruction_config.json")
-    for idx, prompt in enumerate(instruction_prompts, start=1):
-        print(f"{idx}. {prompt}")
+    print(instruction_prompts)
