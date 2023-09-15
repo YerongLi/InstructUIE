@@ -16,7 +16,7 @@ def generate_instruction_prompts(config_file, num_prompts=8):
         # Create template prompts using the sampled instructions
         prompts = []
         for idx, instruction in enumerate(sampled_instructions, start=1):
-            prompt = f"{idx}. {instruction['instruction']}"
+            prompt = f"{instruction['instruction']}"
             prompts.append(prompt)
 
         return prompts
