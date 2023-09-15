@@ -1,8 +1,8 @@
 import json
 import random
-```
+'''
 Fill instructions into a big prompt
-```
+'''
 def generate_instruction_prompts(config_file, num_prompts=8):
     # Load instruction config from the JSON file
     with open(config_file, 'r') as f:
