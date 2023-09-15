@@ -28,5 +28,5 @@ def generate_instruction_prompts(config_file, num_prompts=8):
 
 # Example usage:
 if __name__ == "__main__":
-    instruction_prompts = generate_instruction_prompts("configs/instruction_config.json")
+    instruction_prompts = generate_instruction_prompts("configs/instruction_config.json.bak")
     print(instruction_prompts)
