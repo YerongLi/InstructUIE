@@ -21,7 +21,7 @@ def generate_instruction_prompts(config_file, num_prompts=8):
         header = "Come up with various instructions for information extraction tasks, Coreference Resolution, Relation Extraction, Aspect Extraction, Argument Mining"
         instruction_string = "\n".join(prompts)
 
-        return f"{header}\n{instruction_string}"
+        return f"{header}\n{instruction_string}\n9."
     else:
         return ""
 
