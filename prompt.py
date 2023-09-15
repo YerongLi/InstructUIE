@@ -21,7 +21,7 @@ def generate_instruction_prompts(config_file, num_prompts=8):
     sampled_instructions = random.sample(all_prompts, num_prompts)
 
     # Create the final header and combine prompts into a single string
-    header = "Come up with various instructions for information extraction tasks, Coreference Resolution, Relation Extraction, Aspect Extraction, Argument Mining"
+    header = "Come up with various instructions for information extraction tasks, Coreference Resolution, Relation Extraction, Aspect Extraction, Argument Mining etc."
     instruction_string = "\n".join([f"{idx}. {instruction}" for idx, instruction in enumerate(sampled_instructions, start=1)])
 
     return f"{header}\n{instruction_string}\n{num_prompts + 1}."
