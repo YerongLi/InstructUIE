@@ -29,5 +29,5 @@ def generate_schema_prompts(config_file, num_prompts=8):
 
 # Example usage:
 if __name__ == "__main__":
-    instruction_prompts = generate_schema_prompts("configs/instruction_config.json", num_prompts=10)
+    instruction_prompts = generate_schema_prompts("configs/instruction_config.json", num_prompts=12)
     print(instruction_prompts)
