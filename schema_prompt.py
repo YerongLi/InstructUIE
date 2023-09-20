@@ -13,7 +13,7 @@ def generate_schema_prompts(config_file, num_prompts=8):
     for section, instructions in instruction_config.items():
         if section in {'RC'}: continue
         # Create prompts with both "instruction" and "schema" fields
-        prompts = [f"{instruction['instruction']} \nSchema: {instruction['schema']}" for instruction in instructions if 'schema' in instruction]
+        prompts = [f"{instruction['instruction'].rstrip()}\nSchema:\n{instruction['schema']}" for instruction in instructions if 'schema' in instruction]
         
         # Extend the list of all prompts with prompts from this section
         all_prompts.extend(prompts)
@@ -29,5 +29,5 @@ def generate_schema_prompts(config_file, num_prompts=8):
 
 # Example usage:
 if __name__ == "__main__":
-    instruction_prompts = generate_schema_prompts("configs/instruction_config.json", num_prompts=12)
+    instruction_prompts = generate_schema_prompts("configs/instruction_config.json", num_prompts=10)
     print(instruction_prompts)
